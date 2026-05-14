@@ -152,6 +152,19 @@ The UI is straightforward: a queue list, a job detail view, and a form. A framew
 
 ---
 
+## Screenshots
+
+**Queue — job list with live status, filter, and reorder**
+![Queue view](screenshots/01-queue.png)
+
+**New Job — source/destination endpoint picker with transfer options**
+![New job form](screenshots/02-new-job.png)
+
+**Admin — default transfer options and queue maintenance**
+![Admin panel](screenshots/03-admin-defaults.png)
+
+---
+
 ## Status
 
 Active development. Private source — this repository is a project showcase.
