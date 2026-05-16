@@ -1,6 +1,6 @@
 <div align="center">
 
-# S2SC — Server-to-Server Copy Controller
+# 🚀 S2SC — Server-to-Server Copy Controller
 
 **Safe, resumable server-to-server file transfers via rsync over SSH — with a web UI, job queue, and dry-run safety gates.**
 
@@ -8,13 +8,13 @@
 [![Stack: Python / FastAPI](https://img.shields.io/badge/Stack-Python%20%2F%20FastAPI-009688?style=flat-square)]()
 [![Showcase](https://img.shields.io/badge/Source-Private%20Showcase-lightgrey?style=flat-square)]()
 
-> Private source — this repository is a project showcase.
+> 🔒 Private source — this repository is a project showcase.
 
 </div>
 
 ---
 
-## The Problem It Solves
+## 🎯 The Problem It Solves
 
 Copying large datasets between servers usually means routing all the data through the machine running the command — slow, wasteful, and brittle on flaky connections.
 
@@ -24,7 +24,7 @@ The other problem is safety. Bulk copies are hard to undo. S2SC enforces a dry-r
 
 ---
 
-## How It Works
+## ⚙️ How It Works
 
 ```
 Controller (Linux)
@@ -36,18 +36,18 @@ Controller (Linux)
   └─── Web UI ◄── Browser (any machine on the network)
 ```
 
-1. **Create a job** — pick source and destination endpoints, set paths
-2. **Dry-run prep** — controller scans files, counts size, detects conflicts
-3. **Review** — inspect totals and any existing-file conflicts in the UI
-4. **Approve & start** — one click triggers the actual rsync
-5. **Monitor** — live progress, transfer rate, and ETA
-6. **Optional verify** — post-copy checksum dry-run confirms integrity
+1. 📝 **Create a job** — pick source and destination endpoints, set paths
+2. 🔍 **Dry-run prep** — controller scans files, counts size, detects conflicts
+3. 👀 **Review** — inspect totals and any existing-file conflicts in the UI
+4. ✅ **Approve & start** — one click triggers the actual rsync
+5. 📊 **Monitor** — live progress, transfer rate, and ETA
+6. ✔️ **Optional verify** — post-copy checksum dry-run confirms integrity
 
 ---
 
-## Features
+## ✨ Features
 
-### Safety Model
+### 🛡️ Safety Model
 
 - **Dry-run gate** — every job runs a prep scan before copy; copy never starts automatically
 - **No deletes, no overwrites** — `--ignore-existing` by default; destination files are never touched
@@ -56,21 +56,21 @@ Controller (Linux)
 - **Conflict policy** — choose Ask / Skip / Stop for existing destination files
 - **Verify-only mode** — checksum dry-run against an already-copied destination; reports mismatches without writing anything
 
-### Job Queue
+### 📋 Job Queue
 
 - Sequential execution — one active transfer at a time
 - Reorderable queue for waiting jobs
 - Cancel, pause, and restart support
 - Job states: `queued → preparing → ready → copying → finished / failed / canceled`
 
-### Web UI
+### 🖥️ Web UI
 
 - Queue overview with live status, progress bar, rate, and ETA
 - Job detail view with per-job rsync log and file list
 - New job form — endpoint picker, path entry, policy and flag configuration
 - Admin UI for token management, endpoint management, and password rotation
 
-### Per-Job Transfer Options
+### ⚙️ Per-Job Transfer Options
 
 | Option | Default |
 |:---|:---|
@@ -84,7 +84,7 @@ Controller (Linux)
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 | Layer | Technology |
 |:---|:---|
@@ -99,7 +99,7 @@ Controller (Linux)
 
 ---
 
-## Architecture
+## 🏗️ Architecture
 
 ```
 app/
@@ -124,26 +124,7 @@ app/
 
 ---
 
-## Key Decisions
-
-**Why trigger rsync on the source?**  
-Routing large transfers through the controller wastes bandwidth. Running rsync on the source means data moves directly between endpoints.
-
-**Why a dry-run gate before every copy?**  
-Bulk file operations are hard to reverse. Requiring a prep scan and explicit approval prevents accidents on production storage.
-
-**Why no deletes or overwrites by default?**  
-S2SC is a copy tool, not a sync tool. Default behavior is additive-only.
-
-**Why SQLite?**  
-Zero infrastructure — no service to manage, no connection pool, no separate install.
-
-**Why vanilla JS?**  
-The UI is a queue list, a detail view, and a form. No framework needed, no Node.js on the controller.
-
----
-
-## Screenshots
+## 📸 Screenshots
 
 **Queue — live status, filter, and reorder**
 ![Queue view](screenshots/01-queue.png)
@@ -156,6 +137,6 @@ The UI is a queue list, a detail view, and a form. No framework needed, no Node.
 
 ---
 
-## Status
+## 📊 Status
 
-Active development. Private source — this repository is a project showcase.
+Active development. 🔒 Private source — this repository is a project showcase.
